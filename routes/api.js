@@ -4,17 +4,18 @@ const fs = require("fs");
 const router = express.Router();
 
 router.get('/api/notes', (req, res) => {
-    fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", function(err, data){
-        console.log(err);
-        console.log(data);
-        if (err) {res.json([])};
+    fs.readFile(path.join(__dirname, "..//db.json"), "utf8", function(err, data){
+        if (err) throw {res.json([])};
         res.json(data);
     }); 
 })
 
 router.post('/api/notes', (req, res) => {
-    fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(req.body), function(){     
+    fs.writeFile(path.join(__dirname, "../db.json"), JSON.stringify(req.body), function(){     
         res.send("note saved");
+        
     })
+    const newNote = req.body;
+
 })
 module.exports = router;
