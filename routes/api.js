@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/api/notes', (req, res) => {
     fs.readFile(path.join(__dirname, "..//db.json"), "utf8", function(err, data){
-        if (err) throw {res.json([])};
+        if (err) throw (err);
         res.json(data);
     }); 
 })
@@ -13,7 +13,6 @@ router.get('/api/notes', (req, res) => {
 router.post('/api/notes', (req, res) => {
     fs.writeFile(path.join(__dirname, "../db.json"), JSON.stringify(req.body), function(){     
         res.send("note saved");
-        
     })
     const newNote = req.body;
 
