@@ -4,8 +4,7 @@ const fs = require("fs");
 const router = express.Router();
 
 router.get('/api/notes', (req, res) => {
-    fs.readFile(path.join(__dirname, "..//db.json"), "utf8", function(err, data){
-        if (err) throw (err);
+    fs.readFile(path.join(__dirname, "..//db.json"), "utf8", function(req, res){
         res.json(data);
     }); 
 })
